@@ -446,12 +446,12 @@
                       </div>
                     </div>
 
-                    {/* PREVIEW SIDE (A4) */}
-                    <div className="lg:col-span-7 bg-white p-12 shadow-2xl border min-h-[1100px] print:min-h-0 relative print:p-0 print:shadow-none print:border-none print:m-0">
+                    {/* PREVIEW SIDE (A4) - Memenuhi 1 Kertas A4 menggunakan Flexbox */}
+                    <div className="lg:col-span-7 bg-white p-12 shadow-2xl border min-h-[1100px] print:min-h-[26cm] print:flex print:flex-col relative print:p-0 print:shadow-none print:border-none print:m-0">
                       <div className="absolute top-0 right-0 p-2 bg-slate-800 text-white text-[10px] uppercase font-bold no-print rounded-bl">Pratonton Kertas A4</div>
                       
-                      <div className="text-center border-b-2 border-slate-800 pb-6 mb-8 print:pb-3 print:mb-4 flex flex-col items-center justify-center relative">
-                        <img src="logo.png?v=3" className="w-24 h-24 mb-2 object-contain print:w-16 print:h-16 print:mb-1" alt="Logo" onError={(e)=>e.target.style.display='none'} />
+                      <div className="text-center border-b-2 border-slate-800 pb-6 mb-8 print:pb-4 print:mb-6 flex flex-col items-center justify-center relative">
+                        <img src="logo.png?v=3" className="w-24 h-24 mb-2 object-contain print:w-20 print:h-20 print:mb-1" alt="Logo" onError={(e)=>e.target.style.display='none'} />
                         <h1 className="text-2xl print:text-xl font-bold uppercase tracking-widest text-slate-900">Rancangan Pelajaran Harian</h1>
                         <p className="text-md print:text-sm font-bold text-slate-600 mt-1 uppercase">SK PERMAISURI NUR ZAHIRAH</p>
                         <div className="mt-4 print:mt-2 px-6 py-1.5 print:py-0.5 border-2 border-slate-800 font-bold uppercase text-sm print:text-xs inline-block">
@@ -459,48 +459,49 @@
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-x-10 gap-y-4 print:gap-y-2 mb-8 print:mb-4 text-sm print:text-xs border-b pb-6 print:pb-3 font-bold">
-                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.minggu}</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Minggu</span></div>
-                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.tarikh} ({formData.hari})</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Tarikh</span></div>
-                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.masaMula} - {formData.masaTamat}</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Masa</span></div>
-                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.kelas}</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Kelas</span></div>
-                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between col-span-2"><span>____ / ____ Murid</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Kehadiran</span></div>
+                      <div className="grid grid-cols-2 gap-x-10 gap-y-4 print:gap-y-3 mb-8 print:mb-6 text-sm print:text-sm border-b pb-6 print:pb-4 font-bold">
+                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.minggu}</span><span className="text-slate-400 text-xs uppercase">Minggu</span></div>
+                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.tarikh} ({formData.hari})</span><span className="text-slate-400 text-xs uppercase">Tarikh</span></div>
+                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.masaMula} - {formData.masaTamat}</span><span className="text-slate-400 text-xs uppercase">Masa</span></div>
+                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between"><span>{formData.kelas}</span><span className="text-slate-400 text-xs uppercase">Kelas</span></div>
+                        <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between col-span-2"><span>____ / ____ Murid</span><span className="text-slate-400 text-xs uppercase">Kehadiran</span></div>
                       </div>
 
-                      <div className={`space-y-6 print:space-y-3 text-sm ${formData.isJawi ? 'font-jawi text-base print:text-[15px]' : 'font-rumi text-sm print:text-xs'}`}>
+                      {/* Content Area dengan keupayaan Flex-1 untuk mengisi baki ruang pada kertas A4 */}
+                      <div className={`space-y-6 print:space-y-5 text-sm print:flex-1 print:flex print:flex-col ${formData.isJawi ? 'font-jawi text-base print:text-lg' : 'font-rumi text-sm print:text-base'}`}>
                         <div className="grid grid-cols-12 gap-4 print:gap-2">
-                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">Bidang</div>
-                            <div className={`col-span-9 font-bold text-xl print:text-lg text-indigo-900 ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.tema || '-'}</div>
+                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs pt-1 dir-ltr font-rumi">Bidang</div>
+                            <div className={`col-span-9 font-bold text-xl print:text-xl text-indigo-900 ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.tema || '-'}</div>
                         </div>
                         <div className="grid grid-cols-12 gap-4 print:gap-2">
-                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">Tajuk</div>
-                            <div className={`col-span-9 font-bold text-lg print:text-base ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.tajuk || '-'}</div>
+                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs pt-1 dir-ltr font-rumi">Tajuk</div>
+                            <div className={`col-span-9 font-bold text-lg print:text-lg ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.tajuk || '-'}</div>
                         </div>
                         <div className="grid grid-cols-12 gap-4 print:gap-2 bg-slate-50 p-5 print:p-0 rounded-xl print:bg-transparent print:border-b-0">
-                            <div className="col-span-3 font-bold text-xs print:text-[10px] uppercase text-slate-400 pt-1 dir-ltr font-rumi">Standard Kandungan</div>
-                            <div className={`col-span-9 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.standardKandungan || '-'}</div>
+                            <div className="col-span-3 font-bold text-xs uppercase text-slate-400 pt-1 dir-ltr font-rumi">Standard Kandungan</div>
+                            <div className={`col-span-9 whitespace-pre-line ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.standardKandungan || '-'}</div>
                         </div>
                         <div className="grid grid-cols-12 gap-4 print:gap-2 bg-slate-50 p-5 print:p-0 rounded-xl print:bg-transparent print:border-b-0">
-                            <div className="col-span-3 font-bold text-xs print:text-[10px] uppercase text-slate-400 pt-1 dir-ltr font-rumi">Standard Pembelajaran</div>
-                            <div className={`col-span-9 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.standardPembelajaran || '-'}</div>
+                            <div className="col-span-3 font-bold text-xs uppercase text-slate-400 pt-1 dir-ltr font-rumi">Standard Pembelajaran</div>
+                            <div className={`col-span-9 whitespace-pre-line ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.standardPembelajaran || '-'}</div>
                         </div>
                         <div className="grid grid-cols-12 gap-4 print:gap-2">
-                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">Objektif</div>
-                            <div className={`col-span-9 whitespace-pre-line font-medium print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.objektif || '-'}</div>
+                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs pt-1 dir-ltr font-rumi">Objektif</div>
+                            <div className={`col-span-9 whitespace-pre-line font-medium ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.objektif || '-'}</div>
                         </div>
-                        <div className="grid grid-cols-12 gap-4 print:gap-2 border-t border-slate-100 pt-6 print:pt-3">
-                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">Aktiviti PdP</div>
-                            <div className={`col-span-9 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.aktiviti || '-'}</div>
+                        <div className="grid grid-cols-12 gap-4 print:gap-2 border-t border-slate-100 pt-6 print:pt-4">
+                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs pt-1 dir-ltr font-rumi">Aktiviti PdP</div>
+                            <div className={`col-span-9 whitespace-pre-line ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.aktiviti || '-'}</div>
                         </div>
-                        <div className="grid grid-cols-12 gap-4 print:gap-2 border-t border-slate-100 pt-6 print:pt-3">
-                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">BBM</div>
+                        <div className="grid grid-cols-12 gap-4 print:gap-2 border-t border-slate-100 pt-6 print:pt-4">
+                            <div className="col-span-3 font-bold uppercase text-slate-400 text-xs pt-1 dir-ltr font-rumi">BBM</div>
                             <div className={`col-span-9 font-medium ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.bbm || '-'}</div>
                         </div>
                         
-                        {/* KOTAK REFLEKSI TELAH DIBUANG BORDERNYA, HANYA TINGGAL TEKS SAHAJA */}
-                        <div className="mt-12 print:mt-4 border-t border-slate-100 pt-6 print:pt-3 min-h-[120px] print:min-h-[80px]">
-                            <h3 className="font-bold text-xs print:text-[10px] uppercase text-slate-400 tracking-widest dir-ltr font-rumi mb-3 print:mb-1">Refleksi / Catatan</h3>
-                            <p className={`italic text-slate-700 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.refleksi || 'Tiada catatan.'}</p>
+                        {/* KOTAK REFLEKSI - Menggunakan print:flex-1 untuk merentang ke bawah memenuhkan muka surat */}
+                        <div className="mt-12 print:mt-6 border-t border-slate-100 pt-6 print:pt-6 min-h-[120px] print:flex-1">
+                            <h3 className="font-bold text-xs uppercase text-slate-400 tracking-widest dir-ltr font-rumi mb-3 print:mb-2">Refleksi / Catatan</h3>
+                            <p className={`italic text-slate-700 whitespace-pre-line ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.refleksi || 'Tiada catatan.'}</p>
                         </div>
                       </div>
                     </div>
