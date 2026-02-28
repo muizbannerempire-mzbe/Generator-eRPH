@@ -415,6 +415,7 @@
                           <textarea name="objektif" rows="3" value={formData.objektif} onChange={handleInputChange} placeholder="Objektif" className={inputStyle}></textarea>
                           <textarea name="aktiviti" rows="5" value={formData.aktiviti} onChange={handleInputChange} placeholder="Aktiviti" className={inputStyle}></textarea>
                           <input type="text" name="bbm" value={formData.bbm} onChange={handleInputChange} placeholder="BBM" className={inputStyle}/>
+                          <textarea name="refleksi" rows="2" value={formData.refleksi} onChange={handleInputChange} placeholder="Refleksi" className={inputStyle}></textarea>
                         </div>
                         <div className="flex gap-3 mt-6">
                           <button onClick={handleSaveFirestore} disabled={isSaving} className="flex-1 bg-indigo-600 text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-md active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2">
@@ -445,7 +446,7 @@
                       </div>
                     </div>
 
-                    {/* PREVIEW SIDE (A4) - Diubahsuai untuk muat 1 muka surat */}
+                    {/* PREVIEW SIDE (A4) */}
                     <div className="lg:col-span-7 bg-white p-12 shadow-2xl border min-h-[1100px] print:min-h-0 relative print:p-0 print:shadow-none print:border-none print:m-0">
                       <div className="absolute top-0 right-0 p-2 bg-slate-800 text-white text-[10px] uppercase font-bold no-print rounded-bl">Pratonton Kertas A4</div>
                       
@@ -466,7 +467,6 @@
                         <div className="flex border-b border-slate-200 pb-1.5 print:pb-1 items-center justify-between col-span-2"><span>____ / ____ Murid</span><span className="text-slate-400 text-xs print:text-[10px] uppercase">Kehadiran</span></div>
                       </div>
 
-                      {/* Content Area yang telah dimampatkan untuk cetakan */}
                       <div className={`space-y-6 print:space-y-3 text-sm ${formData.isJawi ? 'font-jawi text-base print:text-[15px]' : 'font-rumi text-sm print:text-xs'}`}>
                         <div className="grid grid-cols-12 gap-4 print:gap-2">
                             <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">Bidang</div>
@@ -496,9 +496,13 @@
                             <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">BBM</div>
                             <div className={`col-span-9 font-medium ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.bbm || '-'}</div>
                         </div>
+                        
+                        {/* KOTAK REFLEKSI TELAH DIBUANG BORDERNYA, HANYA TINGGAL TEKS SAHAJA */}
+                        <div className="mt-12 print:mt-4 border-t border-slate-100 pt-6 print:pt-3 min-h-[120px] print:min-h-[80px]">
+                            <h3 className="font-bold text-xs print:text-[10px] uppercase text-slate-400 tracking-widest dir-ltr font-rumi mb-3 print:mb-1">Refleksi / Catatan</h3>
+                            <p className={`italic text-slate-700 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.refleksi || 'Tiada catatan.'}</p>
+                        </div>
                       </div>
-
-                      {/* Bahagian tandatangan telah dibuang sepenuhnya untuk cetakan! */}
                     </div>
                   </div>
                 )}
