@@ -415,7 +415,6 @@
                           <textarea name="objektif" rows="3" value={formData.objektif} onChange={handleInputChange} placeholder="Objektif" className={inputStyle}></textarea>
                           <textarea name="aktiviti" rows="5" value={formData.aktiviti} onChange={handleInputChange} placeholder="Aktiviti" className={inputStyle}></textarea>
                           <input type="text" name="bbm" value={formData.bbm} onChange={handleInputChange} placeholder="BBM" className={inputStyle}/>
-                          <textarea name="refleksi" rows="2" value={formData.refleksi} onChange={handleInputChange} placeholder="Refleksi" className={inputStyle}></textarea>
                         </div>
                         <div className="flex gap-3 mt-6">
                           <button onClick={handleSaveFirestore} disabled={isSaving} className="flex-1 bg-indigo-600 text-white py-3.5 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-md active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2">
@@ -496,10 +495,6 @@
                         <div className="grid grid-cols-12 gap-4 print:gap-2 border-t border-slate-100 pt-6 print:pt-3">
                             <div className="col-span-3 font-bold uppercase text-slate-400 text-xs print:text-[10px] pt-1 dir-ltr font-rumi">BBM</div>
                             <div className={`col-span-9 font-medium ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.bbm || '-'}</div>
-                        </div>
-                        <div className="mt-12 print:mt-4 border-2 border-slate-900 p-8 print:p-4 rounded-sm min-h-[160px] print:min-h-[80px] relative">
-                            <h3 className="absolute -top-3 left-4 bg-white px-2 font-bold text-xs print:text-[10px] uppercase text-slate-900 tracking-widest italic dir-ltr font-rumi">Refleksi / Catatan</h3>
-                            <p className={`italic text-slate-700 whitespace-pre-line print:leading-snug ${formData.isJawi ? 'dir-rtl' : 'dir-ltr'}`}>{formData.refleksi || 'Tiada catatan.'}</p>
                         </div>
                       </div>
 
